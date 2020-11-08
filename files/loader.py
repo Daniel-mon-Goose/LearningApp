@@ -2,10 +2,7 @@ from abc import ABC, abstractmethod
 
 
 class LoaderInterface(ABC):
-    def __init__(self, filename=""):
-        self.filename = filename
-
-    @classmethod
+    @staticmethod
     @abstractmethod
-    def load_words(cls):
+    def load_words(self, filename):
         pass

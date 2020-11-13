@@ -1,6 +1,8 @@
-class LoaderInterface:
-    def __init__(self, filename=""):
-        self.filename = filename
+from abc import ABC, abstractmethod
 
-    def load_words(self):
+
+class LoaderInterface(ABC):
+    @staticmethod
+    @abstractmethod
+    def load_words(self, filename):
         pass

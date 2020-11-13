@@ -7,10 +7,15 @@ def test_raises_exception_on_abstract_instance():
         LoaderInterface()
 
 
+def test_raises_exception_on_property_setter():
+    with pytest.raises(AttributeError):
+        CSVLoader('').vocabulary = ''
+
+
 def test_csv_container():
-    loader = CSVLoader()
-    data = loader.get_vocabulary("test.csv")
-    assert data == {
+    loader = CSVLoader("test.csv")
+
+    assert loader.vocabulary == {
         'who': ('are', 'you'),
         'a': ('b', 'c')
     }

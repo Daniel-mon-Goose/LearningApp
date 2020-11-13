@@ -3,13 +3,18 @@ from abc import ABC, abstractmethod
 
 
 class LoaderInterface(ABC):
+    @property
     @abstractmethod
-    def get_vocabulary(self, filename):
+    def vocabulary(self):
         pass
 
 
 class CSVLoader(LoaderInterface):
-    def get_vocabulary(self, filename):
-        with open(filename, "r") as file:
+    def __init__(self, filename):
+        self.filename = filename
+
+    @property
+    def vocabulary(self):
+        with open(self.filename, "r") as file:
             file_reader = csv.reader(file)
             return {word: (meaning, example) for word, meaning, example in file_reader}

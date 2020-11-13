@@ -1,6 +1,8 @@
 import csv
 from abc import ABC, abstractmethod
 
+from tools.modifiers import format_check
+
 
 class LoaderInterface(ABC):
     @property
@@ -14,6 +16,7 @@ class CSVLoader(LoaderInterface):
         self.filename = filename
 
     @property
+    @format_check("filename", ".csv")
     def vocabulary(self):
         with open(self.filename, "r") as file:
             file_reader = csv.reader(file)

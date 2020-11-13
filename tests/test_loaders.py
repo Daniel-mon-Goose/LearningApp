@@ -12,6 +12,11 @@ def test_raises_exception_on_property_setter():
         CSVLoader('').vocabulary = ''
 
 
+def test_raises_exception_wrong_format():
+    with pytest.raises(ValueError):
+        vc = CSVLoader("test.txt").vocabulary
+
+
 def test_csv_container():
     loader = CSVLoader("test.csv")
 
